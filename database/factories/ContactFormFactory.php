@@ -18,12 +18,12 @@ class ContactFormFactory extends Factory
     {
         return [
             'name' => $this->faker->name(20),
-            'title' => $this->faker->realText(50),
+            'title' => $this->faker->realText(10),
             'email' => $this->faker->email(),
             'url' => $this->faker->url(),
             'gender' => $this->faker->boolean(),
             'age' => $this->faker->numberBetween(1, 6),
-            'contact' => $this->faker->realText(200),
+            'contact' => $this->faker->realText(10),
         ];
     }
 }

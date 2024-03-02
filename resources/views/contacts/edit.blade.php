@@ -74,7 +74,7 @@
                                         </div>
 
                                         <div class="p-2 w-full">
-                                            <button class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">更新する</button>
+                                            <button class="py-3 px-4 mx-auto text-sm font-semibold rounded-lg border border-transparent bg-teal-100 text-teal-800 hover:bg-teal-200 disabled:opacity-50 disabled:pointer-events-none dark:hover:bg-teal-900 dark:text-teal-500 dark:hover:text-teal-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">更新する</button>
                                         </div>
                                     </div>
                                 </div>
