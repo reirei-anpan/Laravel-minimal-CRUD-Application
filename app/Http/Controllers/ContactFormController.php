@@ -19,7 +19,7 @@ class ContactFormController extends Controller
         //$contacts = ContactForm::select('id', 'name', 'title', 'created_at')->get();
         $contacts = ContactForm::select('id', 'name', 'title', 'created_at')->paginate(20);
 
-        return view('contacts.index', compact('contacts'));
+        return view('contacts.index', ['contacts' => $contacts]);
     }
 
     /**
@@ -65,7 +65,11 @@ class ContactFormController extends Controller
         $gender = CheckFormService::checkGender($contact);
         $age = CheckFormService::checkAge($contact);
 
-        return view('contacts.show', compact('contact', 'gender', 'age'));
+        return view('contacts.show',[
+            'contact' => $contact,
+            'gender' => $gender,
+            'age' => $age,
+        ]);
     }
 
     /**
@@ -77,7 +81,7 @@ class ContactFormController extends Controller
     public function edit($id)
     {
         $contact = ContactForm::find($id);
-        return view('contacts.edit', compact('contact'));
+        return view('contacts.edit', ['contact' => $contact]);
     }
 
     /**
