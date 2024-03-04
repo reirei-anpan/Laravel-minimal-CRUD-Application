@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('contacts.index')" :active="request()->routeIs('contacts.index')">
                         問い合わせ一覧
                     </x-nav-link>
+                    <x-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.index')">
+                        記事一覧
+                    </x-nav-link>
                 </div>
             </div>
 
@@ -75,6 +78,9 @@
             </x-responsive-nav-link>
             <x-responsive-nav-link :href="route('contacts.index')" :active="request()->routeIs('contacts.index')">
                 問い合わせ一覧
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('chirps.index')" :active="request()->routeIs('chirps.index')">
+                記事一覧
             </x-responsive-nav-link>
         </div>
 

@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\ContactFormController;
+use App\Http\Controllers\ChirpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,15 @@ Route::prefix('contacts') // 頭に contacts をつける
     Route::post('/{id}', 'update')->name('update');
     Route::post('/{id}/destroy', 'destroy')->name('destroy');
 });
+
+// GET|HEAD        chirps ................ chirps.index › ChirpController@index
+// POST            chirps ................ chirps.store › ChirpController@store
+// GET|HEAD        chirps/create ....... chirps.create › ChirpController@create
+// GET|HEAD        chirps/{chirp} .......... chirps.show › ChirpController@show
+// PUT|PATCH       chirps/{chirp} ...... chirps.update › ChirpController@update
+// DELETE          chirps/{chirp} .... chirps.destroy › ChirpController@destroy
+// GET|HEAD        chirps/{chirp}/edit ..... chirps.edit › ChirpController@edit
+Route::resource('chirps', ChirpController::class)->middleware(['auth']);
 
 Route::get('/', function () {
     return view('welcome');
