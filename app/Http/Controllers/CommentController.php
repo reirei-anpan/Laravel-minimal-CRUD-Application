@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Chirp;
+use App\Models\Comment;
 
-class ChirpController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,7 @@ class ChirpController extends Controller
      */
     public function index()
     {
-        $chirps = Chirp::all();
-        return view('chirps.index', ['chirps' => $chirps]);
+        //
     }
 
     /**
@@ -25,16 +25,26 @@ class ChirpController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $chirp)
     {
-        $userId = auth()->id();
 
-        Chirp::create([
-            'message' => $request->message,
-            'user_id' => $userId,
-        ]);
+        $comment = new Comment();
+        $comment->comment = $request->comment;
+        $comment->chirp_id = $chirp;
+        $comment->save();
 
         return redirect(route('chirps.index'));
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Chirp $chirp)
+    {
+        return view('comments.show', ['chirp' => $chirp]);
     }
 
     /**
@@ -43,10 +53,9 @@ class ChirpController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Chirp $chirp)
+    public function edit($id)
     {
-        // dd($chirp);
-        return view('chirps.edit', ['chirp' => $chirp]);
+        //
     }
 
     /**
@@ -56,16 +65,9 @@ class ChirpController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Chirp $chirp)
+    public function update(Request $request, $id)
     {
-        $userId = auth()->id();
-
-        Chirp::create([
-            'message' => $request->message,
-            'user_id' => $userId,
-            'updated_at' => now(),
-        ]);
-        return redirect(route('chirps.index'));
+        //
     }
 
     /**
@@ -74,10 +76,8 @@ class ChirpController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chirp $chirp)
+    public function destroy($id)
     {
-        $chirp->delete();
-
-        return redirect(route('chirps.index'));
+        //
     }
 }

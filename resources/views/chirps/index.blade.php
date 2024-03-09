@@ -45,6 +45,9 @@
                                 {{ __('Delete') }}
                             </x-dropdown-link>
                           </form>
+                          <x-dropdown-link :href="route('comments.show', $chirp)">
+                            {{ __('comment') }}
+                          </x-dropdown-link>
                         </x-slot>
                     </x-dropdown>
                   @endif
